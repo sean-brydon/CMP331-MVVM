@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="CMP332.Views.Components.NavigationBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CMP332.Views.Components"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid MaxWidth="1000" Margin="20 10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock
+            Grid.Column="0"
+            FontSize="14"
+            Foreground="White"
+            Text="Navigation Demo" />
+
+        <Button
+            Grid.Column="1"
+            Margin="10 0 0 0"
+            Command="{Binding NavigateHomeCommand}"
+            Content="Home" />
+
+       
+        <Button
+            Grid.Column="3"
+            Margin="10 0 0 0"
+            Command="{Binding NavigateLoginCommand}"
+            Content="Login" />
+
+        </Grid>
+</UserControl>
