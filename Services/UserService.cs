@@ -20,8 +20,10 @@ namespace CMP332.Services
 
         public async Task<User> LoginUser(string Username, string Password)
         {
-            User user = userContext.DbSet().Where(s => s.Username == Username).Include(e => e.Role).FirstOrDefault();
-
+            // Get user from DB querying on the username and password
+            // In a real world application we would compare this password against the hash in the database.
+            User user = userContext.DbSet().Where(s => s.Username == Username && s.Password == Password).Include(e => e.Role).FirstOrDefault();
+            //User user = new User("test", "test", new Role("test1234"));
             return user ?? throw new Exception("The username or password is incorrect");
         }
     }

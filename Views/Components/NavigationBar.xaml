@@ -3,9 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:CMP332.Views.Components"
+             xmlns:local="clr-namespace:CMP332.Views.Components" 
+             xmlns:converters="clr-namespace:CMP332.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <converters:InvertableBooleanToVisibilityConverter x:Key="BoolToVis" />
+    </UserControl.Resources>
     <Grid MaxWidth="1000" Margin="20 10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -28,12 +32,20 @@
             Command="{Binding NavigateHomeCommand}"
             Content="Home" />
 
-       
+
         <Button
             Grid.Column="3"
             Margin="10 0 0 0"
+            Visibility="{Binding IsLoggedIn, Converter={StaticResource BoolToVis}, ConverterParameter=Inverted}"
             Command="{Binding NavigateLoginCommand}"
             Content="Login" />
 
-        </Grid>
+        <Button
+                Grid.Column="3"
+                Margin="10 0 0 0"
+                Visibility="{Binding IsLoggedIn, Converter={StaticResource BoolToVis},ConverterParameter=Normal}"
+                Command="{Binding LogoutUserCommand}"
+                Content="Logout" />
+
+    </Grid>
 </UserControl>

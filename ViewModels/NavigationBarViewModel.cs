@@ -11,6 +11,7 @@ namespace CMP332.ViewModels
 
         public ICommand NavigateHomeCommand { get; set; }
         public ICommand NavigateLoginCommand { get; set; }
+        public ICommand LogoutUserCommand { get; set; }
 
         public bool IsLoggedIn => _userStore.IsLoggedIn;
 
@@ -19,7 +20,9 @@ namespace CMP332.ViewModels
             _userStore = userStore;
             NavigateHomeCommand = new NavigateCommand(homeNavigationService);
             NavigateLoginCommand = new NavigateCommand(loginNavigationService);
-                
+            LogoutUserCommand = new LogoutCommand(userStore);
+
+
             _userStore.LoggedInUserChanged += OnCurrentUserChanged;
         }
 

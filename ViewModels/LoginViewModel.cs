@@ -21,6 +21,7 @@ namespace CMP332.ViewModels
         private string _password;
         private string _errorMessage;
         private UserStore _userStore;
+        private CloseModalNavigationService _loginModalService;
 
         public string Username
         {
@@ -55,19 +56,20 @@ namespace CMP332.ViewModels
 
         public ICommand LoginCommand{ get; }
 
-        public LoginViewModel(UserStore userStore,INavigationService loginNavigationService)
+        public LoginViewModel(UserStore userStore,CloseModalNavigationService loginNavigationService)
         {
-            //_userStore = userStore;
-            //NavigateAccountCommand = new NavigateCommand(accountNavigationService);
+            _userStore = userStore;
+            _loginModalService = loginNavigationService;
             LoginCommand = new AsyncRelayCommand(Login,(ex)=>ErrorMessage = ex.Message);
         }
 
         private async Task Login()
         {
             User user = await new UserService().LoginUser(Username, Password);
+            //Task.Delay(2000);
+            _userStore.LoggedInUser = user;
 
-            //_userStore.LoggedInUser = user;
-
+            _loginModalService.Navigate();
 
         }
     }

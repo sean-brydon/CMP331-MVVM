@@ -5,14 +5,29 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:CMP332.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:converters="clr-namespace:CMP332.Converters"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
+    <UserControl.Resources>
+        <converters:InvertableBooleanToVisibilityConverter x:Key="BoolToVis" />
+    </UserControl.Resources>
     <StackPanel>
-        <TextBlock Margin="10" Text="Account" />
-        <Button
-            Margin="10"
-            Command="{Binding NavigateHomeCommand}"
-            Content="Home" />
+        <!--Only rendered when there is no user logged in -->
+        <StackPanel Visibility="{Binding IsLoggedIn, Converter={StaticResource BoolToVis}, ConverterParameter=Inverted}">
+            <TextBlock Text="Please login to view the dashboard content" FontSize="30"></TextBlock>
+        </StackPanel>
+
+        <!--When there is a valid User--> 
+        <StackPanel Visibility="{Binding IsLoggedIn, Converter={StaticResource BoolToVis}, ConverterParameter=Normal, FallbackValue=hidden}">
+            <TextBlock Text="Welcome" FontSize="25"></TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Name: " FontSize="20"></TextBlock>
+                <TextBlock Text="{Binding Username}" FontSize="20" Foreground="Blue"></TextBlock>
+
+                <TextBlock Text="Role: " FontSize="20" Margin="5,0,0,0"></TextBlock>
+                <TextBlock Text="{Binding Role}" FontSize="20" Foreground="Blue"></TextBlock>
+            </StackPanel>
+        </StackPanel>
     </StackPanel>
 </UserControl>

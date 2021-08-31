@@ -13,62 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace CMP332
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
-    //public partial class App : Application
-    //{
-    //    private readonly NavigationStore _navigationStore;
-    //    private readonly ModalNavigationStore _modalNavigationStore;
-    //    private readonly UserStore _userStore;
-
-    //    public App()
-    //    {
-    //        _navigationStore = new NavigationStore();
-    //        _modalNavigationStore = new ModalNavigationStore();
-    //        //_userStore = new UserStore();
-    //    }
-
-    //    protected override void OnStartup(StartupEventArgs e)
-    //    {
-    //        // Create the navigation service for login
-    //        INavigationService navigationService = CreateLoginNavigationService();
-    //        // Navigate to the defined few model
-    //        navigationService.Navigate();
-
-    //        MainWindow = new MainWindow()
-    //        {
-    //            DataContext = new MainViewModel(_navigationStore, _modalNavigationStore)
-    //        };
-    //        MainWindow.Show();
-
-    //        base.OnStartup(e);
-    //    }
-
-    //    private INavigationService CreateLoginNavigationService()
-    //    {
-    //        // Creates the navigation service for viewmodel and adds it to the store singletone
-    //        // Then Creates the Viewmodel and attaches it to the store. 
-    //        // Allowing us to access only one instance of a particular view at a time.
-    //        return new NavigationService<LoginViewModel>(_navigationStore, CreateLoginViewModel);
-    //    }
-
-    //    private LoginViewModel CreateLoginViewModel()
-    //    {
-    //        //return new LoginViewModel(CreateHomeNavigationService());
-    //        return new LoginViewModel();
-    //    }
-
-    //    private INavigationService CreateHomeNavigationService()
-    //    {
-    //        return new NavigationService<HomeViewModel>(_navigationStore, CreateHomeViewModel);
-    //    }
-
-    //    private HomeViewModel CreateHomeViewModel()
-    //    {
-    //        return new HomeViewModel(CreateLoginNavigationService());
-    //    }
-    //}
+   
 
     public partial class App : Application
     {
@@ -89,7 +34,7 @@ namespace CMP332
             services.AddSingleton<CloseModalNavigationService>();
 
             // Create a home view model and add it the dep array
-            services.AddTransient<HomeViewModel>(s => new HomeViewModel(CreateLoginNavigationService(s)));
+            services.AddTransient<HomeViewModel>(s => new HomeViewModel(s.GetRequiredService<UserStore>(),CreateLoginNavigationService(s)));
             
             // Create the login view model and require its dependencies 
             services.AddTransient<LoginViewModel>(CreateLoginViewModel);
@@ -141,9 +86,8 @@ namespace CMP332
         private LoginViewModel CreateLoginViewModel(IServiceProvider serviceProvider)
         {
             // We use composite here because we need to be able to close the modal inside the modal view but we also need access to the home page on login
-            CompositeNavigationService navigationService = new CompositeNavigationService(serviceProvider.GetRequiredService<CloseModalNavigationService>());
 
-            return new LoginViewModel(serviceProvider.GetRequiredService<UserStore>(),navigationService);
+            return new LoginViewModel(serviceProvider.GetRequiredService<UserStore>(),serviceProvider.GetRequiredService<CloseModalNavigationService>());
         }
 
         private NavigationBarViewModel CreateNavigationBarViewModel(IServiceProvider serviceProvider)
