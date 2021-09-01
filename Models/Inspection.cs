@@ -8,10 +8,25 @@ namespace CMP332.Models
 {
     public class Inspection : ModelBase
     {
-        public DateTime LastInspectionDate { get; set; }
-        public DateTime NextInspectionDate { get; set; }
+        public DateTime InspectionDate { get; set; }
 
         public string InspectionType{ get; set; }
+
+        public bool InspectionCompleted { get; set; }
+        public Inspection()
+        {
+
+        }
+
+
+        // Only Used in seeding
+        public Inspection(int id, DateTime inspectionDate,string inspectionType,bool inspectionCompleted)
+        {
+            Id = id;
+            InspectionDate = inspectionDate;
+            InspectionType = inspectionType;
+            InspectionCompleted = inspectionCompleted;
+        }
     }
 
     // Use this as a string enum InspectionType.QuarterlyInspections etc...

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CMP332.Models
 {
-    class Property
+    public class Property
     {
         public string Address { get; set; }
         public int NumberOfRooms { get; set; }
@@ -15,6 +15,11 @@ namespace CMP332.Models
         public Lettor CurrentLettor { get; set; }
         public virtual ICollection<Inspection> Inspections { get; set; }
         public virtual ICollection<Job> MaintanceJobs { get; set; }
+
+        public Property()
+        {
+
+        }
 
     }
 }
