@@ -9,6 +9,7 @@ using CMP332.Commands;
 using CMP332.Models;
 using CMP332.Services;
 using CMP332.Stores;
+using System.Collections.ObjectModel;
 
 namespace CMP332.ViewModels
 {
@@ -17,14 +18,17 @@ namespace CMP332.ViewModels
         public ICommand NavigateToLoginCommand { get; }
         private UserStore _userStore;
 
+        private  ObservableCollection<Property> _propertiesForUser;
+
         public bool IsLoggedIn => _userStore.IsLoggedIn;
 
         private string _username;
 
         public string Username
         {
-            get { return _username; }
-            set { 
+            get => _username;
+            set
+            {
                 _username = value;
                 OnPropertyChanged(nameof(Username));
             }
@@ -34,13 +38,22 @@ namespace CMP332.ViewModels
 
         public string Role
         {
-            get { return _role; }
-            set { 
-                _role = value; 
+            get => _role;
+            set
+            {
+                _role = value;
                 OnPropertyChanged(nameof(Role));
             }
         }
 
+        public ObservableCollection<Property> PropertiesForUser
+        {
+            get => _propertiesForUser;
+            set
+            {
+                _propertiesForUser = value;
+            }
+        }
 
 
         public HomeViewModel(UserStore userStore, INavigationService loginNavigationService)
@@ -49,6 +62,7 @@ namespace CMP332.ViewModels
             _userStore = userStore;
 
             _userStore.LoggedInUserChanged += OnCurrentUserChanged;
+
         }
 
         private void OnCurrentUserChanged() 
@@ -57,6 +71,15 @@ namespace CMP332.ViewModels
             OnPropertyChanged(nameof(IsLoggedIn));
             this.Username = _userStore.LoggedInUser?.Username;
             this.Role = _userStore.LoggedInUser?.Role.Name;
+            if (_userStore.LoggedInUser != null)
+            {
+                // Load properties on inital load
+                List<Property> _temp = new PropertyService().GetAllPropertiesByUser(_userStore.LoggedInUser);
+                PropertiesForUser = new ObservableCollection<Property>(_temp);
+                OnPropertyChanged(nameof(PropertiesForUser));
+
+            }
+
         }
 
         public override void Dispose()

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using CMP332.Data;
 using CMP332.Models;
@@ -16,16 +17,25 @@ namespace CMP332.Migrations
         {
 
             Console.WriteLine("**************************************************************");
-            Console.WriteLine("** WARNING: Remember, you should only run Seed method once! **");
+            Console.WriteLine("**              WARNING: Seeing the database.               **");
             Console.WriteLine("**************************************************************");
 
             // TODAYS Date
             DateTime dateTime = DateTime.Now;
 
+            // Roles
+            Role sysAdminRole = new Role(1, "System Admin");
+            Role lettingAgentRole = new Role(2, "Letting Agent");
+            Role maintenanceRole = new Role(3, "Maintenance Staff");
+            context.Roles.AddOrUpdate(sysAdminRole);
+            context.Roles.AddOrUpdate(lettingAgentRole);
+            context.Roles.AddOrUpdate(maintenanceRole);
+
+
             // Add Users
-            User SysAdmin = new User(1, "SysAdmin", "Password99!", new Role("System Admin"));
-            User LettingAgent = new User(2, "LettingAgent", "Password99!", new Role("Letting Agent"));
-            User Maintance = new User(3, "MaintenanceStaff", "Password99!", new Role("Maintenance Staff"));
+            User SysAdmin = new User(1, "SysAdmin", "Password99!",sysAdminRole);
+            User LettingAgent = new User(2, "LettingAgent", "Password99!",lettingAgentRole);
+            User Maintance = new User(3, "MaintenanceStaff", "Password99!", maintenanceRole);
 
 
             context.Users.AddOrUpdate(SysAdmin);
@@ -64,7 +74,7 @@ namespace CMP332.Migrations
 
             // Create Lettors
 
-            Lettor lettor1 = new Lettor(1, "Dan Sharp", dateTime.AddYears(-1), dateTime.AddMonths(1));
+            Lettor lettor1 = new Lettor (1, "Dan Sharp", dateTime.AddYears(-1), dateTime.AddMonths(1));
             // No longer in contract
             Lettor lettor2 = new Lettor(2, "Sam Sharp", dateTime.AddYears(-4), dateTime.AddMonths(-1));
             Lettor lettor3 = new Lettor(3, "Sam Smith", dateTime.AddYears(-2), dateTime.AddMonths(5));
@@ -78,6 +88,36 @@ namespace CMP332.Migrations
             context.Lettors.AddOrUpdate(lettor5);
 
             // Properties 
+
+            List<Inspection> inspections1 = new List<Inspection>();
+            inspections1.Add(FiveYearlyElectric);
+
+            List<Job> jobs1 = new List<Job>();
+            jobs1.Add(job1);
+            jobs1.Add(job3);
+
+            List<Inspection> inspections2 = new List<Inspection>();
+            inspections2.Add(YearlyGasInspection1);
+            inspections2.Add(QuarterlyInspections);
+
+            List<Job> jobs2 = new List<Job>();
+            jobs1.Add(job2);
+
+
+            List<Inspection> inspections3 = new List<Inspection>();
+            inspections2.Add(QuarterlyInspection2);
+
+            List<Job> jobs3 = new List<Job>();
+            jobs1.Add(job4);
+            jobs1.Add(job5);
+
+            Property property1 = new Property(1, "9 Wallibo Street", 2, Maintance, LettingAgent, lettor1,inspections1,jobs1);
+            Property property2 = new Property(2, "16 Wallibo Street", 3, Maintance, LettingAgent, lettor2,inspections2,jobs2);
+            Property property3 = new Property(3, "7 Strong Street", 1, Maintance, LettingAgent, lettor3,inspections3,jobs3);
+
+            context.Properties.AddOrUpdate(property1);
+            context.Properties.AddOrUpdate(property2);
+            context.Properties.AddOrUpdate(property3);
 
             base.Seed(context);
         }

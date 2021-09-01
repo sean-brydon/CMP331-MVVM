@@ -9,8 +9,9 @@ namespace CMP332.Models
             
         }
 
-        public Role(string _name)
+        public Role(int id, string _name)
         {
+            Id = id;
             Name = _name;
         }
     }

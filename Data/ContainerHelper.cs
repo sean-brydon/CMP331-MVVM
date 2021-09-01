@@ -16,6 +16,18 @@ namespace CMP332.Data
 
             _container.RegisterType<IRepository<Role>, SQLRepository<Role>>(
                 new ContainerControlledLifetimeManager());
+
+            _container.RegisterType<IRepository<Property>, SQLRepository<Property>>(
+                new ContainerControlledLifetimeManager());
+
+            _container.RegisterType<IRepository<Lettor>, SQLRepository<Lettor>>(
+                new ContainerControlledLifetimeManager());
+
+            _container.RegisterType<IRepository<Job>, SQLRepository<Job>>(
+                new ContainerControlledLifetimeManager());
+
+            _container.RegisterType<IRepository<Inspection>, SQLRepository<Inspection>>(
+               new ContainerControlledLifetimeManager());
         }
 
         public static IUnityContainer Container

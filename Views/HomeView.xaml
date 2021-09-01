@@ -11,6 +11,7 @@
     mc:Ignorable="d">
     <UserControl.Resources>
         <converters:InvertableBooleanToVisibilityConverter x:Key="BoolToVis" />
+        <converters:IntToString x:Key="IntToString" />
     </UserControl.Resources>
     <StackPanel>
         <!--Only rendered when there is no user logged in -->
@@ -18,7 +19,7 @@
             <TextBlock Text="Please login to view the dashboard content" FontSize="30"></TextBlock>
         </StackPanel>
 
-        <!--When there is a valid User--> 
+        <!--When there is a valid User-->
         <StackPanel Visibility="{Binding IsLoggedIn, Converter={StaticResource BoolToVis}, ConverterParameter=Normal, FallbackValue=hidden}">
             <TextBlock Text="Welcome" FontSize="25"></TextBlock>
             <StackPanel Orientation="Horizontal">
@@ -28,6 +29,23 @@
                 <TextBlock Text="Role: " FontSize="20" Margin="5,0,0,0"></TextBlock>
                 <TextBlock Text="{Binding Role}" FontSize="20" Foreground="Blue"></TextBlock>
             </StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <ListView Margin="10" Grid.Column="0"
+                    ItemsSource="{Binding PropertiesForUser}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn DisplayMemberBinding="{Binding Address}" Header="Address"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding NumberOfRooms,Converter={StaticResource IntToString}}" Header="Number Of Rooms"/>
+
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
         </StackPanel>
     </StackPanel>
 </UserControl>

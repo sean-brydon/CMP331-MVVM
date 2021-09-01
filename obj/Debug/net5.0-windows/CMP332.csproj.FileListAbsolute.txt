@@ -92,3 +92,4 @@ C:\Users\sean.brydon\OneDrive - Accenture\Documents\GitHub\CMP332-MVVM\obj\Debug
 C:\Users\sean.brydon\OneDrive - Accenture\Documents\GitHub\CMP332-MVVM\obj\Debug\net5.0-windows\CMP332.pdb
 C:\Users\sean.brydon\OneDrive - Accenture\Documents\GitHub\CMP332-MVVM\obj\Debug\net5.0-windows\CMP332.genruntimeconfig.cache
 C:\Users\sean.brydon\OneDrive - Accenture\Documents\GitHub\CMP332-MVVM\bin\Debug\net5.0-windows\CMP332.dll.config
+C:\Users\sean.brydon\OneDrive - Accenture\Documents\GitHub\CMP332-MVVM\obj\Debug\net5.0-windows\CMP332.Migrations.AddingModels.resources

@@ -10,8 +10,8 @@
     xmlns:components="clr-namespace:CMP332.Views.Components"
     xmlns:modalControl="clr-namespace:ModalControl;assembly=ModalControl"
     Title="Demo"
-    Width="800"
-    Height="450"
+    Width="900"
+    Height="600"
     mc:Ignorable="d">
     <Grid>
         <Grid.Resources>
