@@ -58,12 +58,12 @@ namespace CMP332.Migrations
 
             // Create Inspections
 
-            Inspection YearlyGasInspection = new Inspection(1,dateTime.AddMonths(11),InspectionType.YearlyGasInspections,false);
-            Inspection YearlyGasInspection1 = new Inspection(2,dateTime.AddMonths(1).AddDays(4),InspectionType.YearlyGasInspections,false);
-            Inspection FiveYearlyElectric = new Inspection(3,dateTime.AddMonths(1),InspectionType.FiveYearElectricity,false);
-            Inspection FiveYearlyElectric2 = new Inspection(6,dateTime.AddMonths(-2),InspectionType.FiveYearElectricity,true);
-            Inspection QuarterlyInspections = new Inspection(4,dateTime.AddDays(11),InspectionType.QuarterlyInspections,false);
-            Inspection QuarterlyInspection2 = new Inspection(5,dateTime.AddDays(-5),InspectionType.QuarterlyInspections,true);
+            Inspection YearlyGasInspection = new Inspection(1,InspectionType.YearlyGasInspections,false);
+            Inspection YearlyGasInspection1 = new Inspection(2,InspectionType.YearlyGasInspections,false);
+            Inspection FiveYearlyElectric = new Inspection(3,InspectionType.FiveYearElectricity,false);
+            Inspection FiveYearlyElectric2 = new Inspection(6,InspectionType.FiveYearElectricity,true);
+            Inspection QuarterlyInspections = new Inspection(4,InspectionType.QuarterlyInspections,false);
+            Inspection QuarterlyInspection2 = new Inspection(5,InspectionType.QuarterlyInspections,true);
 
             context.Inspections.AddOrUpdate(YearlyGasInspection);
             context.Inspections.AddOrUpdate(YearlyGasInspection1);

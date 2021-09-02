@@ -8,11 +8,12 @@ namespace CMP332.Models
 {
     public class Inspection : ModelBase
     {
-        public DateTime InspectionDate { get; set; }
 
         public string InspectionType{ get; set; }
 
         public bool InspectionCompleted { get; set; }
+
+        public Property property { get; set; }
         public Inspection()
         {
 
@@ -20,10 +21,9 @@ namespace CMP332.Models
 
 
         // Only Used in seeding
-        public Inspection(int id, DateTime inspectionDate,string inspectionType,bool inspectionCompleted)
+        public Inspection(int id, string inspectionType,bool inspectionCompleted)
         {
             Id = id;
-            InspectionDate = inspectionDate;
             InspectionType = inspectionType;
             InspectionCompleted = inspectionCompleted;
         }

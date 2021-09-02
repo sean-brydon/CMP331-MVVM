@@ -19,6 +19,7 @@ namespace CMP332.ViewModels
         private UserStore _userStore;
 
         private  ObservableCollection<Property> _propertiesForUser;
+        private  ObservableCollection<Inspection> _inspectionsForUser;
 
         public bool IsLoggedIn => _userStore.IsLoggedIn;
 
@@ -55,6 +56,16 @@ namespace CMP332.ViewModels
             }
         }
 
+        public ObservableCollection<Inspection> InspectionsForUser
+        {
+            get => _inspectionsForUser;
+            set
+            {
+                _inspectionsForUser = value;
+            }
+        }
+
+
 
         public HomeViewModel(UserStore userStore, INavigationService loginNavigationService)
         {
@@ -74,10 +85,13 @@ namespace CMP332.ViewModels
             if (_userStore.LoggedInUser != null)
             {
                 // Load properties on inital load
-                List<Property> _temp = new PropertyService().GetAllPropertiesByUser(_userStore.LoggedInUser);
-                PropertiesForUser = new ObservableCollection<Property>(_temp);
+                List<Property> propertiesAsList = new PropertyService().GetAllPropertiesByUser(_userStore.LoggedInUser);
+                PropertiesForUser = new ObservableCollection<Property>(propertiesAsList);
                 OnPropertyChanged(nameof(PropertiesForUser));
 
+                List<Inspection> inspectionsAsList = new InspectionService().GetInspectionsFromUser(_userStore.LoggedInUser);
+                InspectionsForUser = new ObservableCollection<Inspection>(inspectionsAsList);
+                OnPropertyChanged(nameof(InspectionsForUser));
             }
 
         }

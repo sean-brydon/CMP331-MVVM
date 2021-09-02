@@ -46,6 +46,7 @@ C:\Users\sean4\Desktop\CMP332\obj\Debug\net5.0-windows\Views\Components\Layout.b
 C:\Users\sean4\Desktop\CMP332\obj\Debug\net5.0-windows\Views\Components\NavigationBar.baml
 C:\Users\sean4\Desktop\CMP332\bin\Debug\net5.0-windows\ModalControl.dll
 C:\Users\sean.brydon\OneDrive - Accenture\Documents\GitHub\CMP332-MVVM\bin\Debug\net5.0-windows\CMP332.exe
+C:\Users\sean.brydon\OneDrive - Accenture\Documents\GitHub\CMP332-MVVM\bin\Debug\net5.0-windows\CMP332.dll.config
 C:\Users\sean.brydon\OneDrive - Accenture\Documents\GitHub\CMP332-MVVM\bin\Debug\net5.0-windows\CMP332.deps.json
 C:\Users\sean.brydon\OneDrive - Accenture\Documents\GitHub\CMP332-MVVM\bin\Debug\net5.0-windows\CMP332.runtimeconfig.json
 C:\Users\sean.brydon\OneDrive - Accenture\Documents\GitHub\CMP332-MVVM\bin\Debug\net5.0-windows\CMP332.runtimeconfig.dev.json
@@ -65,7 +66,6 @@ C:\Users\sean.brydon\OneDrive - Accenture\Documents\GitHub\CMP332-MVVM\bin\Debug
 C:\Users\sean.brydon\OneDrive - Accenture\Documents\GitHub\CMP332-MVVM\bin\Debug\net5.0-windows\runtimes\win-x86\native\sni.dll
 C:\Users\sean.brydon\OneDrive - Accenture\Documents\GitHub\CMP332-MVVM\bin\Debug\net5.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\sean.brydon\OneDrive - Accenture\Documents\GitHub\CMP332-MVVM\bin\Debug\net5.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
-C:\Users\sean.brydon\OneDrive - Accenture\Documents\GitHub\CMP332-MVVM\obj\Debug\net5.0-windows\CMP332.csproj.AssemblyReference.cache
 C:\Users\sean.brydon\OneDrive - Accenture\Documents\GitHub\CMP332-MVVM\obj\Debug\net5.0-windows\MainWindow.g.cs
 C:\Users\sean.brydon\OneDrive - Accenture\Documents\GitHub\CMP332-MVVM\obj\Debug\net5.0-windows\Views\Components\Layout.g.cs
 C:\Users\sean.brydon\OneDrive - Accenture\Documents\GitHub\CMP332-MVVM\obj\Debug\net5.0-windows\Views\Components\NavigationBar.g.cs
@@ -82,6 +82,8 @@ C:\Users\sean.brydon\OneDrive - Accenture\Documents\GitHub\CMP332-MVVM\obj\Debug
 C:\Users\sean.brydon\OneDrive - Accenture\Documents\GitHub\CMP332-MVVM\obj\Debug\net5.0-windows\Views\LoginView.baml
 C:\Users\sean.brydon\OneDrive - Accenture\Documents\GitHub\CMP332-MVVM\obj\Debug\net5.0-windows\CMP332.g.resources
 C:\Users\sean.brydon\OneDrive - Accenture\Documents\GitHub\CMP332-MVVM\obj\Debug\net5.0-windows\CMP332.Migrations.Inital.resources
+C:\Users\sean.brydon\OneDrive - Accenture\Documents\GitHub\CMP332-MVVM\obj\Debug\net5.0-windows\CMP332.Migrations.AddingModels.resources
+C:\Users\sean.brydon\OneDrive - Accenture\Documents\GitHub\CMP332-MVVM\obj\Debug\net5.0-windows\CMP332.Migrations.RemovingVirtuals.resources
 C:\Users\sean.brydon\OneDrive - Accenture\Documents\GitHub\CMP332-MVVM\obj\Debug\net5.0-windows\CMP332.csproj.GenerateResource.cache
 C:\Users\sean.brydon\OneDrive - Accenture\Documents\GitHub\CMP332-MVVM\obj\Debug\net5.0-windows\CMP332.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\sean.brydon\OneDrive - Accenture\Documents\GitHub\CMP332-MVVM\obj\Debug\net5.0-windows\CMP332.AssemblyInfoInputs.cache
@@ -91,5 +93,4 @@ C:\Users\sean.brydon\OneDrive - Accenture\Documents\GitHub\CMP332-MVVM\obj\Debug
 C:\Users\sean.brydon\OneDrive - Accenture\Documents\GitHub\CMP332-MVVM\obj\Debug\net5.0-windows\ref\CMP332.dll
 C:\Users\sean.brydon\OneDrive - Accenture\Documents\GitHub\CMP332-MVVM\obj\Debug\net5.0-windows\CMP332.pdb
 C:\Users\sean.brydon\OneDrive - Accenture\Documents\GitHub\CMP332-MVVM\obj\Debug\net5.0-windows\CMP332.genruntimeconfig.cache
-C:\Users\sean.brydon\OneDrive - Accenture\Documents\GitHub\CMP332-MVVM\bin\Debug\net5.0-windows\CMP332.dll.config
-C:\Users\sean.brydon\OneDrive - Accenture\Documents\GitHub\CMP332-MVVM\obj\Debug\net5.0-windows\CMP332.Migrations.AddingModels.resources
+C:\Users\sean.brydon\OneDrive - Accenture\Documents\GitHub\CMP332-MVVM\obj\Debug\net5.0-windows\CMP332.Migrations.EasierInspectionQuery.resources

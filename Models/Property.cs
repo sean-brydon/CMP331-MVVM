@@ -13,8 +13,8 @@ namespace CMP332.Models
         public User MaintanceStaff { get; set; }
         public User LettingAgent { get; set; }
         public Lettor CurrentLettor { get; set; }
-        public virtual List<Inspection> Inspections { get; set; }
-        public virtual List<Job> MaintanceJobs { get; set; }
+        public List<Inspection> Inspections { get; set; }
+        public List<Job> MaintanceJobs { get; set; }
 
         public Property()
         {
