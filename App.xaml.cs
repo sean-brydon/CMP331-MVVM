@@ -39,6 +39,9 @@ namespace CMP332
             // Create the login view model and require its dependencies 
             services.AddTransient<LoginViewModel>(CreateLoginViewModel);
 
+            services.AddTransient<AccountViewModel>(CreateAccountViewModel);
+
+
             // Setup the required dependencies for the nav bar
             services.AddTransient<NavigationBarViewModel>(CreateNavigationBarViewModel);
 
@@ -79,20 +82,28 @@ namespace CMP332
 
         private INavigationService CreateLoginNavigationService(IServiceProvider serviceProvider)
         {
-            return new ModalNavigationService<LoginViewModel>(serviceProvider.GetRequiredService<ModalNavigationStore>(), () => serviceProvider.GetRequiredService<LoginViewModel>());
+            return new ModalNavigationService<LoginViewModel>(serviceProvider.GetRequiredService<ModalNavigationStore>(), serviceProvider.GetRequiredService<LoginViewModel>);
+        }
+
+        private INavigationService CreateAcountNavigationService(IServiceProvider serviceProvider)
+        {
+            return new ModalNavigationService<AccountViewModel>(serviceProvider.GetRequiredService<ModalNavigationStore>(), serviceProvider.GetRequiredService<AccountViewModel>);
         }
 
 
         private LoginViewModel CreateLoginViewModel(IServiceProvider serviceProvider)
         {
-            // We use composite here because we need to be able to close the modal inside the modal view but we also need access to the home page on login
-
             return new LoginViewModel(serviceProvider.GetRequiredService<UserStore>(),serviceProvider.GetRequiredService<CloseModalNavigationService>());
+        }
+
+        private AccountViewModel CreateAccountViewModel(IServiceProvider serviceProvider)
+        {
+            return new AccountViewModel(serviceProvider.GetRequiredService<UserStore>(), serviceProvider.GetRequiredService<CloseModalNavigationService>());
         }
 
         private NavigationBarViewModel CreateNavigationBarViewModel(IServiceProvider serviceProvider)
         {
-            return new NavigationBarViewModel(serviceProvider.GetRequiredService<UserStore>(),CreateHomeNavigationSystem(serviceProvider),CreateLoginNavigationService(serviceProvider));
+            return new NavigationBarViewModel(serviceProvider.GetRequiredService<UserStore>(),CreateHomeNavigationSystem(serviceProvider),CreateLoginNavigationService(serviceProvider),CreateAcountNavigationService(serviceProvider));
         }
 
 

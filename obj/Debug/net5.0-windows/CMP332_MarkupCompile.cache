@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\sean.brydon\OneDrive - Accenture\Documents\GitHub\CMP332-MVVM\obj\Debug\net5.0-windows\
+C:\Users\sean4\Documents\GitHub\CMP331-MVVM\obj\Debug\net5.0-windows\
 CMP332
 none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
-C:\Users\sean.brydon\OneDrive - Accenture\Documents\GitHub\CMP332-MVVM\App.xaml
-5259282401
+C:\Users\sean4\Documents\GitHub\CMP331-MVVM\App.xaml
+61980453232
 
-55-292073336
-201485552576
-MainWindow.xaml;Views\Components\Layout.xaml;Views\Components\NavigationBar.xaml;Views\HomeView.xaml;Views\LoginView.xaml;
+57-1187314321
+201-1025597427
+MainWindow.xaml;Views\AccountView.xaml;Views\Components\Layout.xaml;Views\Components\NavigationBar.xaml;Views\HomeView.xaml;Views\LoginView.xaml;
 
 False
 

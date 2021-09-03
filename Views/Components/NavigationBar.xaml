@@ -34,11 +34,18 @@
 
 
         <Button
-            Grid.Column="3"
+            Grid.Column="2"
             Margin="10 0 0 0"
             Visibility="{Binding IsLoggedIn, Converter={StaticResource BoolToVis}, ConverterParameter=Inverted}"
             Command="{Binding NavigateLoginCommand}"
             Content="Login" />
+
+        <Button
+            Grid.Column="2"
+            Margin="10 0 0 0"
+            Visibility="{Binding IsLoggedIn, Converter={StaticResource BoolToVis},ConverterParameter=Normal}"
+            Command="{Binding NavigateAccountCommand}"
+            Content="Account" />
 
         <Button
                 Grid.Column="3"
