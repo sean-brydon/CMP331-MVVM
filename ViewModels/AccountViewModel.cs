@@ -9,6 +9,8 @@ namespace CMP332.ViewModels
 {
     public class AccountViewModel : ViewModelBase
     {
+        private readonly UserStore _userStore;
+        private readonly CloseModalNavigationService _closeModalNavigationService;
 
         private string _currentPassword;
         private string _newPassword;
@@ -48,13 +50,18 @@ namespace CMP332.ViewModels
 
         public AccountViewModel(UserStore userStore, CloseModalNavigationService closeModalNavigationService)
         {
-            UpdatePasswordCommand = new AsyncRelayCommand(UpdatePassword,(ex)=>ErrorMessage = ex.Message);
+            _userStore = userStore;
+            _closeModalNavigationService = closeModalNavigationService;
 
+            UpdatePasswordCommand = new AsyncRelayCommand(UpdatePassword,(ex)=>ErrorMessage = ex.Message);
         }
 
         private async Task UpdatePassword()
         {
-            Task.Delay(200);
+            // Update the password via the user service
+            new UserService().UpdatePassword(_userStore.LoggedInUser.Id,CurrentPassword,NewPassword);
+            // Close the open modal.
+            _closeModalNavigationService.Navigate();
         }
     }
 }
