@@ -39,6 +39,9 @@ namespace CMP332
             // Create the login view model and require its dependencies 
             services.AddTransient<LoginViewModel>(CreateLoginViewModel);
 
+            // Naming convention got a little messy here
+            services.AddTransient<CreateUserViewModel>(CreateCreateUserViewModel);
+
             services.AddTransient<AccountViewModel>(CreateAccountViewModel);
 
             services.AddTransient<UserViewModel>(CreateUserViewModel);
@@ -75,6 +78,7 @@ namespace CMP332
             base.OnStartup(e);
         }
 
+        #region NavigationServices
         private INavigationService CreateHomeNavigationSystem(IServiceProvider serviceProvider)
         {
             return new LayoutNavigationService<HomeViewModel>(serviceProvider.GetRequiredService<NavigationStore>(),serviceProvider.GetRequiredService<HomeViewModel>,serviceProvider.GetRequiredService<NavigationBarViewModel>);
@@ -95,7 +99,14 @@ namespace CMP332
             return new ModalNavigationService<AccountViewModel>(serviceProvider.GetRequiredService<ModalNavigationStore>(), serviceProvider.GetRequiredService<AccountViewModel>);
         }
 
+        private INavigationService CreateCreateUserNavigationService(IServiceProvider serviceProvider)
+        {
+            return new ModalNavigationService<CreateUserViewModel>(serviceProvider.GetRequiredService<ModalNavigationStore>(), serviceProvider.GetRequiredService<CreateUserViewModel>);
+        }
 
+        #endregion
+
+        #region ViewModels
         private LoginViewModel CreateLoginViewModel(IServiceProvider serviceProvider)
         {
             return new LoginViewModel(serviceProvider.GetRequiredService<UserStore>(),serviceProvider.GetRequiredService<CloseModalNavigationService>());
@@ -113,8 +124,12 @@ namespace CMP332
 
         private UserViewModel CreateUserViewModel(IServiceProvider serviceProvider)
         {
-            return new UserViewModel(serviceProvider.GetRequiredService<UserStore>());
+            return new UserViewModel(serviceProvider.GetRequiredService<UserStore>(),CreateCreateUserNavigationService(serviceProvider));
         }
-
+        private CreateUserViewModel CreateCreateUserViewModel(IServiceProvider serviceProvider)
+        {
+            return new CreateUserViewModel(serviceProvider.GetRequiredService<CloseModalNavigationService>());
+        }
+        #endregion
     }
 }

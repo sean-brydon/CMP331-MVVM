@@ -53,10 +53,25 @@ namespace CMP332.Services
         public async Task UpdateUser(User u)
         {
             // Check if username already exists
-            User foundUserByUsername = await userContext.DbSet().FirstOrDefaultAsync(e=> e.Username  == u.Username);
+            User foundUserByUsername = await FindUserByUsername(u);
             if (foundUserByUsername != null && foundUserByUsername.Id != u.Id) throw new Exception("There is already a user with this name");
 
             await userContext.UpdateAsync(u);
+            await userContext.Commit();
+        }
+
+        private async Task<User> FindUserByUsername(User u)
+        {
+            return await userContext.DbSet().FirstOrDefaultAsync(e => e.Username == u.Username);
+        }
+
+        public async Task CreateUser(User u)
+        {
+            User foundUserExists = await FindUserByUsername(u);
+            if (foundUserExists != null) throw new Exception("This user already exists");
+
+            userContext.Insert(u);
+            await userContext.Commit();
         }
     }
 }

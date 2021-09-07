@@ -94,12 +94,14 @@ namespace CMP332.ViewModels
         #endregion
 
         public ICommand UpdateUserCommand { get; private set; }
+        public ICommand NavigateUserModal { get; private set; }
 
-        public UserViewModel(UserStore userStore)
+        public UserViewModel(UserStore userStore,INavigationService openModalService)
         {
             _users = new UserService().GetAllUsers();
             _roles = new RoleService().GetAllRoles();
             UpdateUserCommand = new AsyncRelayCommand(UpdateUser, (ex) => ErrorMessage = ex.Message);
+            NavigateUserModal = new NavigateCommand(openModalService);
         }
 
         private async Task UpdateUser()
