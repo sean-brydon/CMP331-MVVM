@@ -63,6 +63,7 @@ namespace CMP332.ViewModels
         }
 
         private Role _selectedRole;
+        private readonly CloseModalNavigationService _closeModalService;
 
         public Role SelectedRole
         {
@@ -80,12 +81,14 @@ namespace CMP332.ViewModels
             _roles = new RoleService().GetAllRoles();
             CloseModalCommand = new NavigateCommand(closeModalService);
             CreateUserCommand = new AsyncRelayCommand(CreateAccount,ex=>ErrorMessage = ex.Message);
+            this._closeModalService = closeModalService;
         }
 
         public async Task CreateAccount()
         {
             User userToCreate = new User(Username, Password, SelectedRole);
             await new UserService().CreateUser(userToCreate);
+            _closeModalService.Navigate();
         }
     }
 }
