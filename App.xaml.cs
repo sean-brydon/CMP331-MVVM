@@ -41,6 +41,8 @@ namespace CMP332
 
             services.AddTransient<AccountViewModel>(CreateAccountViewModel);
 
+            services.AddTransient<UserViewModel>(CreateUserViewModel);
+
 
             // Setup the required dependencies for the nav bar
             services.AddTransient<NavigationBarViewModel>(CreateNavigationBarViewModel);
@@ -61,8 +63,7 @@ namespace CMP332
             _serviceProvider = services.BuildServiceProvider();
         }
 
-      
-
+     
         protected override void OnStartup(StartupEventArgs e)
         {
             INavigationService initalNavigationService = _serviceProvider.GetRequiredService<INavigationService>();
@@ -79,6 +80,10 @@ namespace CMP332
             return new LayoutNavigationService<HomeViewModel>(serviceProvider.GetRequiredService<NavigationStore>(),serviceProvider.GetRequiredService<HomeViewModel>,serviceProvider.GetRequiredService<NavigationBarViewModel>);
         }
 
+        private INavigationService CreateUserNavigationService(IServiceProvider serviceProvider)
+        {
+            return new LayoutNavigationService<UserViewModel>(serviceProvider.GetRequiredService<NavigationStore>(), serviceProvider.GetRequiredService<UserViewModel>, serviceProvider.GetRequiredService<NavigationBarViewModel>);
+        }
 
         private INavigationService CreateLoginNavigationService(IServiceProvider serviceProvider)
         {
@@ -103,9 +108,13 @@ namespace CMP332
 
         private NavigationBarViewModel CreateNavigationBarViewModel(IServiceProvider serviceProvider)
         {
-            return new NavigationBarViewModel(serviceProvider.GetRequiredService<UserStore>(),CreateHomeNavigationSystem(serviceProvider),CreateLoginNavigationService(serviceProvider),CreateAcountNavigationService(serviceProvider));
+            return new NavigationBarViewModel(serviceProvider.GetRequiredService<UserStore>(),CreateHomeNavigationSystem(serviceProvider),CreateLoginNavigationService(serviceProvider),CreateAcountNavigationService(serviceProvider),CreateUserNavigationService(serviceProvider));
         }
 
+        private UserViewModel CreateUserViewModel(IServiceProvider serviceProvider)
+        {
+            return new UserViewModel(serviceProvider.GetRequiredService<UserStore>());
+        }
 
     }
 }

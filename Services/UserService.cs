@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
@@ -40,6 +41,13 @@ namespace CMP332.Services
 
             userContext.Update(user);
 
+        }
+
+        public List<User> GetAllUsers()
+        {
+            List<User> users = userContext.Collection().Include("Role").ToList();
+
+            return users;
         }
     }
 }

@@ -13,17 +13,19 @@ namespace CMP332.ViewModels
         public ICommand NavigateLoginCommand { get; set; }
         public ICommand LogoutUserCommand { get; set; }
         public ICommand NavigateAccountCommand { get; set; }
+        public ICommand NavigateAdminCommand { get; set; }
 
 
         public bool IsLoggedIn => _userStore.IsLoggedIn;
-        public bool IsAdmin => _userStore.LoggedInUser.Role.Name == "System Admin";
+        public bool IsAdmin => _userStore.IsAdmin;
 
-        public NavigationBarViewModel(UserStore userStore,INavigationService homeNavigationService, INavigationService loginNavigationService, INavigationService accountNavigationService)
+        public NavigationBarViewModel(UserStore userStore,INavigationService homeNavigationService, INavigationService loginNavigationService, INavigationService accountNavigationService,INavigationService userManagementService)
         {
             _userStore = userStore;
             NavigateHomeCommand = new NavigateCommand(homeNavigationService);
             NavigateLoginCommand = new NavigateCommand(loginNavigationService);
             NavigateAccountCommand = new NavigateCommand(accountNavigationService);
+            NavigateAdminCommand = new NavigateCommand(userManagementService);
             LogoutUserCommand = new LogoutCommand(userStore);
 
 
