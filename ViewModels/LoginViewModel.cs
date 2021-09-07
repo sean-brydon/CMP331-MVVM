@@ -9,8 +9,7 @@ using CMP332.Commands;
 using CMP332.Models;
 using CMP332.Services;
 using CMP332.Stores;
-using INavigationService = CMP332.Services.INavigationService;
-using NavigateCommand = CMP332.Commands.NavigateCommand;
+
 
 namespace CMP332.ViewModels
 {

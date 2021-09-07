@@ -57,5 +57,16 @@ namespace CMP332.Data
             dbSet.Attach(t);
             context.Entry(t).State = EntityState.Modified;
         }
+
+        public async Task<int> UpdateAsync<T>(T item) where T : ModelBase
+        {
+            var entity = dbSet.Find(item.Id);
+            if (entity == null)
+            {
+                return 0;
+            }
+
+            return context.SaveChanges();
+        }
     }
 }

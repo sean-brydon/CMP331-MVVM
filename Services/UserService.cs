@@ -49,5 +49,14 @@ namespace CMP332.Services
 
             return users;
         }
+
+        public async Task UpdateUser(User u)
+        {
+            // Check if username already exists
+            User foundUserByUsername = await userContext.DbSet().FirstOrDefaultAsync(e=> e.Username  == u.Username);
+            if (foundUserByUsername != null && foundUserByUsername.Id != u.Id) throw new Exception("There is already a user with this name");
+
+            await userContext.UpdateAsync(u);
+        }
     }
 }

@@ -62,6 +62,8 @@ namespace CMP332.ViewModels
             new UserService().UpdatePassword(_userStore.LoggedInUser.Id,CurrentPassword,NewPassword);
             // Close the open modal.
             _closeModalNavigationService.Navigate();
+
+            ErrorMessage = "Account Has been updated please wait...";
         }
     }
 }

@@ -14,5 +14,6 @@ namespace CMP332.Data
         T Find(string Id);
         void Insert(T t);
         void Update(T t);
+        Task<int> UpdateAsync<T>(T item) where T : ModelBase;
     }
 }
