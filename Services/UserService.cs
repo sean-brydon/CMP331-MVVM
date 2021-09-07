@@ -56,7 +56,7 @@ namespace CMP332.Services
             User foundUserByUsername = await FindUserByUsername(u);
             if (foundUserByUsername != null && foundUserByUsername.Id != u.Id) throw new Exception("There is already a user with this name");
 
-            await userContext.UpdateAsync(u);
+            userContext.Update(u);
             await userContext.Commit();
         }
 
@@ -71,6 +71,12 @@ namespace CMP332.Services
             if (foundUserExists != null) throw new Exception("This user already exists");
 
             userContext.Insert(u);
+            await userContext.Commit();
+        }
+
+        public async Task DeleteUser(User selectedUser)
+        {
+            userContext.Delete(selectedUser.Id);
             await userContext.Commit();
         }
     }

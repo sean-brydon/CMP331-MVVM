@@ -28,6 +28,9 @@ namespace CMP332.Data
 
             _container.RegisterType<IRepository<Inspection>, SQLRepository<Inspection>>(
                new ContainerControlledLifetimeManager());
+
+            _container.RegisterType<IRepository<Invoice>, SQLRepository<Invoice>>(
+              new ContainerControlledLifetimeManager());
         }
 
         public static IUnityContainer Container

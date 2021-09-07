@@ -10,8 +10,8 @@ namespace CMP332.Data
         IQueryable<T> Collection();
         DbSet<T> DbSet();
         Task<bool> Commit();
-        void Delete(string Id);
-        T Find(string Id);
+        void Delete(int Id);
+        T Find(int Id);
         void Insert(T t);
         void Update(T t);
         Task<int> UpdateAsync<T>(T item) where T : ModelBase;

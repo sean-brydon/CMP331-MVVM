@@ -81,6 +81,7 @@ namespace CMP332.ViewModels
         }
 
         private string _editPassword;
+        private readonly UserStore userStore;
 
         public string EditPassword
         {
@@ -94,6 +95,7 @@ namespace CMP332.ViewModels
         #endregion
 
         public ICommand UpdateUserCommand { get; private set; }
+        public ICommand DeleteUserCommand { get; }
         public ICommand NavigateUserModal { get; private set; }
 
         public UserViewModel(UserStore userStore,INavigationService openModalService)
@@ -101,7 +103,9 @@ namespace CMP332.ViewModels
             _users = new UserService().GetAllUsers();
             _roles = new RoleService().GetAllRoles();
             UpdateUserCommand = new AsyncRelayCommand(UpdateUser, (ex) => ErrorMessage = ex.Message);
+            DeleteUserCommand = new AsyncRelayCommand(DeleteUser, (ex) => ErrorMessage = ex.Message);
             NavigateUserModal = new NavigateCommand(openModalService);
+            this.userStore = userStore;
         }
 
         private async Task UpdateUser()
@@ -127,5 +131,19 @@ namespace CMP332.ViewModels
             ErrorMessage = "Account Has been updated please wait...";
 
         }
+
+        private async Task DeleteUser()
+        {
+            if (SelectedUser.Id == userStore.LoggedInUser.Id)
+            {
+                throw new Exception("You can not delete yourself.");
+            }
+
+            await new UserService().DeleteUser(SelectedUser);
+            ErrorMessage = "Account Has been deleted please wait...";
+
+        }
     }
+
+
 }

@@ -33,7 +33,7 @@ namespace CMP332.Data
             return true;
         }
 
-        public void Delete(string Id)
+        public void Delete(int Id)
         {
             var t = Find(Id);
             if (context.Entry(t).State == EntityState.Detached)
@@ -42,7 +42,7 @@ namespace CMP332.Data
             dbSet.Remove(t);
         }
 
-        public T Find(string Id)
+        public T Find(int Id)
         {
             return dbSet.Find(Id);
         }

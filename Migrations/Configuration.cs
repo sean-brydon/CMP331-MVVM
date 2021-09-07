@@ -114,10 +114,26 @@ namespace CMP332.Migrations
             Property property1 = new Property(1, "9 Wallibo Street", 2, Maintance, LettingAgent, lettor1,inspections1,jobs1);
             Property property2 = new Property(2, "16 Wallibo Street", 3, Maintance, LettingAgent, lettor2,inspections2,jobs2);
             Property property3 = new Property(3, "7 Strong Street", 1, Maintance, LettingAgent, lettor3,inspections3,jobs3);
+            Property property4 = new Property(4, "7 Strong Street", 5, Maintance, LettingAgent, null, null, null);
+            Property property5 = new Property(5, "7 Strong Street", 2, Maintance, LettingAgent, null, null, null);
+
 
             context.Properties.AddOrUpdate(property1);
             context.Properties.AddOrUpdate(property2);
             context.Properties.AddOrUpdate(property3);
+            context.Properties.AddOrUpdate(property4);
+            context.Properties.AddOrUpdate(property5);
+
+
+            Invoice invoice1 = new Invoice(1, lettor1, 425, dateTime.AddDays(-5));
+            Invoice invoice2 = new Invoice(1, lettor3, 405, dateTime.AddDays(1));
+            Invoice invoice3 = new Invoice(1, lettor5, 650, dateTime.AddDays(-16));
+            Invoice invoice4 = new Invoice(1, lettor4, 1250, dateTime.AddDays(-50));
+
+            context.Invoices.AddOrUpdate(invoice1);
+            context.Invoices.AddOrUpdate(invoice2);
+            context.Invoices.AddOrUpdate(invoice3);
+            context.Invoices.AddOrUpdate(invoice4);
 
             base.Seed(context);
         }

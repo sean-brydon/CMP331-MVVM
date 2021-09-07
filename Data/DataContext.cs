@@ -18,6 +18,7 @@ namespace CMP332.Data
         public DbSet<Lettor> Lettors { get; set; }
         public DbSet<Job> Jobs { get; set; }
         public DbSet<Inspection> Inspections { get; set; }
+        public DbSet<Invoice> Invoices { get; set; }
 
 
     }

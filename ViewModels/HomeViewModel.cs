@@ -20,6 +20,8 @@ namespace CMP332.ViewModels
 
         private  ObservableCollection<Property> _propertiesForUser;
         private  ObservableCollection<Inspection> _inspectionsForUser;
+        private  ObservableCollection<Invoice> _overduePayments;
+
 
         public bool IsLoggedIn => _userStore.IsLoggedIn;
 
@@ -64,8 +66,16 @@ namespace CMP332.ViewModels
                 _inspectionsForUser = value;
             }
         }
+        public ObservableCollection<Invoice> OverDuePayments
+        {
+            get => _overduePayments;
+            set
+            {
+                _overduePayments = value;
+            }
+        }
 
-
+        
 
         public HomeViewModel(UserStore userStore, INavigationService loginNavigationService)
         {
@@ -92,6 +102,10 @@ namespace CMP332.ViewModels
                 List<Inspection> inspectionsAsList = new InspectionService().GetInspectionsFromUser(_userStore.LoggedInUser);
                 InspectionsForUser = new ObservableCollection<Inspection>(inspectionsAsList);
                 OnPropertyChanged(nameof(InspectionsForUser));
+
+                List<Invoice> overduePayments = new InvoiceService().FindAllOverdue().ToList();
+                OverDuePayments = new ObservableCollection<Invoice>(overduePayments);
+                OnPropertyChanged(nameof(OverDuePayments));
             }
 
         }

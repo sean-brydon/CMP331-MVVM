@@ -17,7 +17,7 @@ namespace CMP332.Models
 
         }
 
-        // Used in seeding only
+        // Used in seeding only & in editing
         public Lettor(int id, string name, DateTime contractStartDate, DateTime contractEndDate)
         {
             Id = id;
