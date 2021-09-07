@@ -65,7 +65,7 @@ namespace CMP332.ViewModels
 
         private async Task Login()
         {
-            User user = await new UserService().LoginUser(Username, Password);
+            User user =  new UserService().LoginUser(Username, Password);
             //Task.Delay(2000);
             _userStore.LoggedInUser = user;
 
