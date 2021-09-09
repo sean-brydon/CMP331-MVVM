@@ -36,5 +36,21 @@ namespace CMP332.Models
         public const string YearlyGasInspections = "Yearly Gas Inspections";
         public const string FiveYearElectricity = "Five Year Electricity Inspection";
         public const string ElectricityInspectionBefore = "Electricity Inspection Before New Tentant";
+        public List<string> ToList
+        {
+            get
+            {
+                List<String> list = new List<string>();
+
+                list.Add(QuarterlyInspections);
+                list.Add(YearlyGasInspections);
+                list.Add(FiveYearElectricity);
+                list.Add(ElectricityInspectionBefore);
+
+                return list;
+            }
+        }
     }
+
+   
 }

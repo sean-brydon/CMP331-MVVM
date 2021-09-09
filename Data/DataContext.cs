@@ -5,7 +5,7 @@ namespace CMP332.Data
 {
     public class DataContext :DbContext
     {
-        private const string NameOrConnectionString = @"Data Source=localhost\SQLEXPRESS;Initial Catalog=CMP332;Integrated Security=True";
+        private const string NameOrConnectionString = @"Data Source=localhost\SQLEXPRESS;Initial Catalog=CMP332_DB;Integrated Security=True";
 
         public DataContext() : base(NameOrConnectionString)
         {

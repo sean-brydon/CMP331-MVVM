@@ -17,6 +17,9 @@
     <Compile Update="Views\LettingView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\PropertyView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\UserView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -35,6 +38,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\LettingView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\PropertyView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\UserView.xaml">
