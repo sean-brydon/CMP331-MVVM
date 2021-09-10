@@ -19,6 +19,8 @@ namespace CMP332.Stores
 
         public bool IsLoggedIn => LoggedInUser != null;
         public bool IsAdmin => LoggedInUser?.Role.Name == "System Admin";
+        public bool IsLettingAgent => LoggedInUser?.Role.Name == "Letting Agent";
+        public bool IsMaintenanceStaff => LoggedInUser?.Role.Name == "Maintenance Staff";
 
         public event Action LoggedInUserChanged;
 
