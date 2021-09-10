@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\sean4\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\sean4\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_.19.00" t="ExcludeRecursive" />
+    <e p="C:\Users\sean4\AppData\Roaming\JetBrains\Rider2020.2\consoles\db" t="IncludeRecursive" />
+    <e p="C:\Users\sean4\AppData\Roaming\JetBrains\Rider2020.2\extensions" t="IncludeRecursive" />
+    <e p="C:\Users\sean4\Documents\GitHub\CMP331-MVVM" t="IncludeRecursive">
+      <e p=".gitignore" t="Include" />
+      <e p="App.config" t="Include" />
+      <e p="App.xaml" t="Include" />
+      <e p="App.xaml.cs" t="Include" />
+      <e p="AssemblyInfo.cs" t="Include" />
+      <e p="bin" t="ExcludeRecursive" />
+      <e p="CMP332.csproj" t="IncludeRecursive" />
+      <e p="Commands" t="Include">
+        <e p="AsyncCommandBase.cs" t="Include" />
+        <e p="AsyncRelayCommand.cs" t="Include" />
+        <e p="CommandBase.cs" t="Include" />
+        <e p="LogoutCommand.cs" t="Include" />
+        <e p="NavigateCommand.cs" t="Include" />
+      </e>
+      <e p="Converters" t="Include">
+        <e p="IntToString.cs" t="Include" />
+        <e p="InvertableBooleanToVisibilityConverter.cs" t="Include" />
+      </e>
+      <e p="Data" t="Include">
+        <e p="ContainerHelper.cs" t="Include" />
+        <e p="DataContext.cs" t="Include" />
+        <e p="IRepository.cs" t="Include" />
+        <e p="SQLRepository.cs" t="Include" />
+      </e>
+      <e p="MainWindow.xaml" t="Include" />
+      <e p="MainWindow.xaml.cs" t="Include" />
+      <e p="Migrations" t="Include">
+        <e p="202108301913394_Inital.cs" t="Include" />
+        <e p="202108301913394_Inital.Designer.cs" t="Include" />
+        <e p="202108301913394_Inital.resx" t="Include" />
+        <e p="202109011035010_AddingModels.cs" t="Include" />
+        <e p="202109011035010_AddingModels.Designer.cs" t="Include" />
+        <e p="202109011035010_AddingModels.resx" t="Include" />
+        <e p="202109021226382_RemovingVirtuals.cs" t="Include" />
+        <e p="202109021226382_RemovingVirtuals.Designer.cs" t="Include" />
+        <e p="202109021226382_RemovingVirtuals.resx" t="Include" />
+        <e p="202109021248549_EasierInspectionQuery.cs" t="Include" />
+        <e p="202109021248549_EasierInspectionQuery.Designer.cs" t="Include" />
+        <e p="202109021248549_EasierInspectionQuery.resx" t="Include" />
+        <e p="202109071847429_AddingInvoices.cs" t="Include" />
+        <e p="202109071847429_AddingInvoices.Designer.cs" t="Include" />
+        <e p="202109071847429_AddingInvoices.resx" t="Include" />
+        <e p="Configuration.cs" t="Include" />
+      </e>
+      <e p="Models" t="Include">
+        <e p="Inspection.cs" t="Include" />
+        <e p="Invoice.cs" t="Include" />
+        <e p="Job.cs" t="Include" />
+        <e p="Lettor.cs" t="Include" />
+        <e p="ModelBase.cs" t="Include" />
+        <e p="Property.cs" t="Include" />
+        <e p="Role.cs" t="Include" />
+        <e p="User.cs" t="Include" />
+      </e>
+      <e p="obj" t="ExcludeRecursive">
+        <e p="Debug" t="Include">
+          <e p="net5.0-windows" t="Include">
+            <e p="App.g.cs" t="Include" />
+            <e p="CMP332.AssemblyInfo.cs" t="Include" />
+            <e p="GeneratedInternalTypeHelper.g.cs" t="Include" />
+            <e p="MainWindow.g.cs" t="Include" />
+            <e p="Views" t="Include">
+              <e p="AccountView.g.cs" t="Include" />
+              <e p="Components" t="Include">
+                <e p="Layout.g.cs" t="Include" />
+                <e p="NavigationBar.g.cs" t="Include" />
+              </e>
+              <e p="CreateUserModalView.g.cs" t="Include" />
+              <e p="HomeView.g.cs" t="Include" />
+              <e p="LettingView.g.cs" t="Include" />
+              <e p="LoginView.g.cs" t="Include" />
+              <e p="PropertyView.g.cs" t="Include" />
+              <e p="UserView.g.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Services" t="Include">
+        <e p="CloseModalNavigationService.cs" t="Include" />
+        <e p="CompositeNavigationService.cs" t="Include" />
+        <e p="INavigationService.cs" t="Include" />
+        <e p="InspectionService.cs" t="Include" />
+        <e p="InvoiceService.cs" t="Include" />
+        <e p="JobService.cs" t="Include" />
+        <e p="LayoutNavigationService.cs" t="Include" />
+        <e p="ModalNavigationService.cs" t="Include" />
+        <e p="NavigationService.cs" t="Include" />
+        <e p="ParameterNavigationService.cs" t="Include" />
+        <e p="PropertyService.cs" t="Include" />
+        <e p="RoleService.cs" t="Include" />
+        <e p="UserService.cs" t="Include" />
+      </e>
+      <e p="Stores" t="Include">
+        <e p="INavigationStore.cs" t="Include" />
+        <e p="ModalNavigationStore.cs" t="Include" />
+        <e p="NavigationStore.cs" t="Include" />
+        <e p="UserStore.cs" t="Include" />
+      </e>
+      <e p="ViewModels" t="Include">
+        <e p="AccountViewModel.cs" t="Include" />
+        <e p="CreateUserViewModel.cs" t="Include" />
+        <e p="CreateViewModel.cs" t="Include" />
+        <e p="HomeViewModel.cs" t="Include" />
+        <e p="LayoutViewModel.cs" t="Include" />
+        <e p="LoginViewModel.cs" t="Include" />
+        <e p="MainViewModel.cs" t="Include" />
+        <e p="NavigationBarViewModel.cs" t="Include" />
+        <e p="PropertyViewModel.cs" t="Include" />
+        <e p="UserViewModel.cs" t="Include" />
+        <e p="ViewModelBase.cs" t="Include" />
+      </e>
+      <e p="Views" t="Include">
+        <e p="AccountView.xaml" t="Include" />
+        <e p="AccountView.xaml.cs" t="Include" />
+        <e p="Components" t="Include">
+          <e p="Layout.xaml" t="Include" />
+          <e p="Layout.xaml.cs" t="Include" />
+          <e p="NavigationBar.xaml" t="Include" />
+          <e p="NavigationBar.xaml.cs" t="Include" />
+        </e>
+        <e p="CreateUserModalView.xaml" t="Include" />
+        <e p="CreateUserModalView.xaml.cs" t="Include" />
+        <e p="HomeView.xaml" t="Include" />
+        <e p="HomeView.xaml.cs" t="Include" />
+        <e p="LettingView.xaml" t="Include" />
+        <e p="LettingView.xaml.cs" t="Include" />
+        <e p="LoginView.xaml" t="Include" />
+        <e p="LoginView.xaml.cs" t="Include" />
+        <e p="PropertyView.xaml" t="Include" />
+        <e p="PropertyView.xaml.cs" t="Include" />
+        <e p="UserView.xaml" t="Include" />
+        <e p="UserView.xaml.cs" t="Include" />
+      </e>
+    </e>
+  </component>
+</project>

@@ -92,21 +92,30 @@ namespace CMP332.ViewModels
             OnPropertyChanged(nameof(IsLoggedIn));
             this.Username = _userStore.LoggedInUser?.Username;
             this.Role = _userStore.LoggedInUser?.Role.Name;
-            if (_userStore.LoggedInUser != null)
+            // Return null here to prevent a nested if statement - using guard clauses is easier to read.
+            if (_userStore.LoggedInUser == null) return;
+            // Load properties on inital load
+            if (_userStore.IsAdmin)
             {
-                // Load properties on inital load
-                List<Property> propertiesAsList = new PropertyService().GetAllPropertiesByUser(_userStore.LoggedInUser);
+                List<Property> propertiesAsList = new PropertyService().GetAll();
+                List<Inspection> inspectionsAsList = new InspectionService().GetAll();
                 PropertiesForUser = new ObservableCollection<Property>(propertiesAsList);
-                OnPropertyChanged(nameof(PropertiesForUser));
-
-                List<Inspection> inspectionsAsList = new InspectionService().GetInspectionsFromUser(_userStore.LoggedInUser);
                 InspectionsForUser = new ObservableCollection<Inspection>(inspectionsAsList);
-                OnPropertyChanged(nameof(InspectionsForUser));
-
-                List<Invoice> overduePayments = new InvoiceService().FindAllOverdue().ToList();
-                OverDuePayments = new ObservableCollection<Invoice>(overduePayments);
-                OnPropertyChanged(nameof(OverDuePayments));
             }
+            else
+            {
+                List<Property> propertiesAsList = new PropertyService().GetAllPropertiesByUser(_userStore.LoggedInUser);
+                List<Inspection> inspectionsAsList = new InspectionService().GetInspectionsFromUser(_userStore.LoggedInUser);
+                PropertiesForUser = new ObservableCollection<Property>(propertiesAsList);
+                InspectionsForUser = new ObservableCollection<Inspection>(inspectionsAsList);
+            }
+            // Needs to happen for everyone
+            List<Invoice> overduePayments = new InvoiceService().FindAllOverdue().ToList();
+            OverDuePayments = new ObservableCollection<Invoice>(overduePayments);
+
+            OnPropertyChanged(nameof(PropertiesForUser));
+            OnPropertyChanged(nameof(InspectionsForUser));
+            OnPropertyChanged(nameof(OverDuePayments));
 
         }
 

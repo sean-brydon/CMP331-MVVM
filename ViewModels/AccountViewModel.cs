@@ -59,7 +59,7 @@ namespace CMP332.ViewModels
         private async Task UpdatePassword()
         {
             // Update the password via the user service
-            new UserService().UpdatePassword(_userStore.LoggedInUser.Id,CurrentPassword,NewPassword);
+            await new UserService().UpdatePassword(_userStore.LoggedInUser.Id,CurrentPassword,NewPassword);
             // Close the open modal.
             _closeModalNavigationService.Navigate();
 

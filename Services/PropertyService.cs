@@ -23,6 +23,11 @@ namespace CMP332.Services
             return _propertyContext.DbSet().Where(p => p.MaintanceStaff.Id == u.Id || p.LettingAgent.Id == u.Id).ToList();
         }
 
+        public List<Property> GetAll()
+        {
+            return _propertyContext.Collection().ToList();
+        }
+
         public List<Property> GetAllPropertiesWithNoLettor()
         {
             return _propertyContext.DbSet().Where(p => p.CurrentLettor == null).ToList();
