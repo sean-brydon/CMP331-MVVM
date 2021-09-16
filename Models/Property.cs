@@ -10,6 +10,7 @@ namespace CMP332.Models
     {
         public string Address { get; set; }
         public int NumberOfRooms { get; set; }
+        public float? CostPerMonth { get; set; }
         public User MaintanceStaff { get; set; }
         public User LettingAgent { get; set; }
         public Lettor CurrentLettor { get; set; }
@@ -22,7 +23,6 @@ namespace CMP332.Models
         }
 
 
-        // This is only used in seeding
         public Property(int id, string address, int numOfRooms,User maintanceStaff,User lettingAgent,Lettor currentLettor, List<Inspection> inspections, List<Job> maintanceJobs)
         {
             Id = id;
@@ -34,6 +34,20 @@ namespace CMP332.Models
             Inspections = inspections;
             MaintanceJobs = maintanceJobs;
         }
+
+        public Property(int id, string address, int numOfRooms, User maintanceStaff, User lettingAgent, Lettor currentLettor, List<Inspection> inspections, List<Job> maintanceJobs,float costPerMonth)
+        {
+            Id = id;
+            Address = address;
+            NumberOfRooms = numOfRooms;
+            MaintanceStaff = maintanceStaff;
+            LettingAgent = lettingAgent;
+            CurrentLettor = currentLettor;
+            Inspections = inspections;
+            MaintanceJobs = maintanceJobs;
+            CostPerMonth = costPerMonth;
+        }
+
 
     }
 }

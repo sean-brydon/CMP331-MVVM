@@ -16,11 +16,11 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Id}" Header="Id"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Username}" Header="Address"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Username}" Header="Number Of Rooms"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Role.Name}" Header="Maintenance Staff"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Role.Name}" Header="Letting Agent"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Role.Name}" Header="Number of Jobs"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Address}" Header="Address"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding NumberOfRooms}" Header="Number Of Rooms"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding MaintanceStaff.Name}" Header="Maintenance Staff"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding LettingAgent.Name}" Header="Letting Agent"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding CurrentLettor.FullName}" Header="Number of Jobs"/>
                     <GridViewColumn DisplayMemberBinding="{Binding Role.Name}" Header="Number of Inspections Due"/>
                 </GridView>
             </ListView.View>

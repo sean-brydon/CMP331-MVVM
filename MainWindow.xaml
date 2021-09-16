@@ -27,6 +27,12 @@
             <DataTemplate DataType="{x:Type vms:CreateUserViewModel}">
                 <views:CreateUserModalView />
             </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:CreatePropertyViewModel}">
+                <views:CreatePropertyView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:PropertyViewModel}">
+                <views:PropertyView />
+            </DataTemplate>
             <DataTemplate DataType="{x:Type vms:UserViewModel}">
                 <views:UserView />
             </DataTemplate>

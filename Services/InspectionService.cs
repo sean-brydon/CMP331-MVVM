@@ -20,7 +20,7 @@ namespace CMP332.Services
 
         public List<Inspection> GetInspectionsFromUser(User u, bool inspectionStatus = false)
         {
-            List<Inspection> inspections = _inspectionContext.DbSet().Include("Property").Where(e => (e.property.LettingAgent.Id == u.Id || e.property.MaintanceStaff.Id == u.Id) && e.InspectionCompleted == inspectionStatus).ToList();
+            List<Inspection> inspections = _inspectionContext.DbSet().Include("Property").Where(e => (e.Property.LettingAgent.Id == u.Id || e.Property.MaintanceStaff.Id == u.Id) && e.InspectionCompleted == inspectionStatus).ToList();
             return inspections;
         }
 

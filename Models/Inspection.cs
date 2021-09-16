@@ -13,7 +13,7 @@ namespace CMP332.Models
 
         public bool InspectionCompleted { get; set; }
 
-        public Property property { get; set; }
+        public Property Property { get; set; }
         public Inspection()
         {
 

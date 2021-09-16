@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using CMP332.Models;
 using CMP332.Services;
 using CMP332.Stores;
 using CMP332.ViewModels;
@@ -45,6 +46,7 @@ namespace CMP332
             services.AddTransient<AccountViewModel>(CreateAccountViewModel);
 
             services.AddTransient<UserViewModel>(CreateUserViewModel);
+            services.AddTransient<CreatePropertyViewModel>(CreateCreatePropertyViewModel);
 
 
             // Setup the required dependencies for the nav bar
@@ -89,6 +91,11 @@ namespace CMP332
             return new LayoutNavigationService<UserViewModel>(serviceProvider.GetRequiredService<NavigationStore>(), serviceProvider.GetRequiredService<UserViewModel>, serviceProvider.GetRequiredService<NavigationBarViewModel>);
         }
 
+        private INavigationService CreatePropertyNavigationService(IServiceProvider serviceProvider)
+        {
+            return new LayoutNavigationService<PropertyViewModel>(serviceProvider.GetRequiredService<NavigationStore>(), serviceProvider.GetRequiredService<PropertyViewModel>, serviceProvider.GetRequiredService<NavigationBarViewModel>);
+        }
+
         private INavigationService CreateLoginNavigationService(IServiceProvider serviceProvider)
         {
             return new ModalNavigationService<LoginViewModel>(serviceProvider.GetRequiredService<ModalNavigationStore>(), serviceProvider.GetRequiredService<LoginViewModel>);
@@ -102,6 +109,11 @@ namespace CMP332
         private INavigationService CreateCreateUserNavigationService(IServiceProvider serviceProvider)
         {
             return new ModalNavigationService<CreateUserViewModel>(serviceProvider.GetRequiredService<ModalNavigationStore>(), serviceProvider.GetRequiredService<CreateUserViewModel>);
+        }
+
+        private INavigationService CreateCreateProperCreateCrudNavigationService(IServiceProvider serviceProvider)
+        {
+            return new ModalNavigationService<CreatePropertyViewModel>(serviceProvider.GetRequiredService<ModalNavigationStore>(), serviceProvider.GetRequiredService<CreatePropertyViewModel>);
         }
 
         #endregion
@@ -129,6 +141,16 @@ namespace CMP332
         private CreateUserViewModel CreateCreateUserViewModel(IServiceProvider serviceProvider)
         {
             return new CreateUserViewModel(serviceProvider.GetRequiredService<CloseModalNavigationService>());
+        }
+
+        private CreatePropertyViewModel CreateCreatePropertyViewModel(IServiceProvider serviceProvider)
+        {
+            return new CreatePropertyViewModel(serviceProvider.GetRequiredService<CloseModalNavigationService>());
+        }
+
+        private PropertyViewModel CreatePropertyViewModel(IServiceProvider serviceProvider)
+        {
+            return new PropertyViewModel(serviceProvider.GetRequiredService<UserStore>(), CreateCreateProperCreateCrudNavigationService(serviceProvider));
         }
         #endregion
     }
