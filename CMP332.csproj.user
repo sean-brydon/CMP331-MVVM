@@ -5,6 +5,9 @@
     <Compile Update="Views\AccountView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\AvaliablePropertiesView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\Components\Layout.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -32,6 +35,9 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="Views\AccountView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AvaliablePropertiesView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\Components\Layout.xaml">

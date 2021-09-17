@@ -15,6 +15,7 @@ namespace CMP332.ViewModels
         public ICommand NavigateAccountCommand { get; set; }
         public ICommand NavigateAdminCommand { get; set; }
         public ICommand NavigatePropertiesCommand { get; set; }
+        public ICommand NavigateAvaliableProperties { get; set; }
         public ICommand NavigateReportCommand { get; set; }
 
 
@@ -25,7 +26,7 @@ namespace CMP332.ViewModels
         public NavigationBarViewModel(UserStore userStore,INavigationService homeNavigationService, 
             INavigationService loginNavigationService, INavigationService accountNavigationService,
             INavigationService userManagementService,INavigationService propertiesNavigationService,
-            INavigationService reportNavigationService
+            INavigationService reportNavigationService, INavigationService avaliblePropertyNavigationService
             )
         {
             _userStore = userStore;
@@ -35,6 +36,7 @@ namespace CMP332.ViewModels
             NavigateAdminCommand = new NavigateCommand(userManagementService);
             NavigatePropertiesCommand = new NavigateCommand(propertiesNavigationService);
             NavigateReportCommand = new NavigateCommand(reportNavigationService);
+            NavigateAvaliableProperties = new NavigateCommand(avaliblePropertyNavigationService);
             LogoutUserCommand = new LogoutCommand(userStore);
 
 

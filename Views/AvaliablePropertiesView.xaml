@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="CMP332.Views.AvaliablePropertiesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CMP332.Views"
+             xmlns:converters="clr-namespace:CMP332.Converters"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <converters:FloatToString x:Key="FloatToString" />
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel  Orientation="Horizontal">
+            <Button Height="25" Content="Get All" Command="{Binding GetAllCommand}"></Button>
+            <Button Height="25" Content="Filter Available" Command="{Binding FilterAvailableCommand}"></Button>
+
+            <TextBox Height="25" Width="50" Text="{Binding MinRoomsInput}" Margin="30 0 0 0 "></TextBox>
+            <Button Height="25" Content="Filter Min Rooms" Command="{Binding FilterMinRoomsCommand}"></Button>
+
+            <TextBox Height="25" Width="50" Margin="30 0 0 0" Text="{Binding MaxRoomPrice}"></TextBox>
+            <Button Height="25" Content="Filter Max Price" Command="{Binding FilterMaxPriceCommand}"></Button>
+
+        </StackPanel>
+        <ListView Name="PropertyGrid" ItemsSource="{Binding FilteredProperties}" SelectedItem="{Binding SelectedProperty}" Grid.Row="1">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Id}" Header="Id"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Address}" Header="Address"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding NumberOfRooms}" Header="Number Of Rooms"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding CostPerMonth}" Header="Monthly Cost"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding LettingAgent.Username}" Header="Letting Agent"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding CurrentLettor.FullName}" Header="Current Lettor"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</UserControl>

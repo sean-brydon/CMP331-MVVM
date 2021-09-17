@@ -118,11 +118,11 @@ namespace CMP332.Migrations
 
        
 
-            Property property1 = new Property(1, "9 Wallibo Street", 2, Maintance, LettingAgent, lettor1,inspections1,jobs1);
-            Property property2 = new Property(2, "16 Wallibo Street", 3, Maintance, LettingAgent, lettor2,inspections2,jobs2);
-            Property property3 = new Property(3, "7 Strong Street", 1, Maintance, LettingAgent, lettor3,inspections3,null);
-            Property property4 = new Property(4, "7 Strong Street", 5, Maintance, LettingAgent, null, null, null);
-            Property property5 = new Property(5, "7 Strong Street", 2, Maintance, LettingAgent, null, null, null);
+            Property property1 = new Property(1, "9 Wallibo Street", 2, Maintance, LettingAgent, lettor1,inspections1,jobs1,(float)320.4);
+            Property property2 = new Property(2, "16 Wallibo Street", 3, Maintance, LettingAgent, lettor2,inspections2,jobs2,(float)639.00);
+            Property property3 = new Property(3, "7 Strong Street", 1, Maintance, LettingAgent, lettor3,inspections3,null,(float)1920.65);
+            Property property4 = new Property(4, "7 Strong Street", 5, Maintance, LettingAgent, null, null, null,(float)511.00);
+            Property property5 = new Property(5, "7 Strong Street", 2, Maintance, LettingAgent, null, null, null,(float)200.23);
 
 
             context.Properties.AddOrUpdate(property1);

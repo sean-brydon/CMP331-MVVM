@@ -58,5 +58,15 @@ namespace CMP332.Services
             _propertyContext.Insert(newProperty);
             return await _propertyContext.Commit();
         }
+
+        public async Task<List<Property>> GetAllWhereMinRooms(int minRooms)
+        {
+            return await _propertyContext.DbSet().Where(e => e.NumberOfRooms >= minRooms).ToListAsync();
+        }
+
+        public async Task<List<Property>> GetAllWhereMaxPrice(float MaxPrice)
+        {
+            return await _propertyContext.DbSet().Where(e => e.CostPerMonth <= MaxPrice).ToListAsync();
+        }
     }
 }

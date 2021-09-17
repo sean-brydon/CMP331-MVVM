@@ -49,6 +49,7 @@ namespace CMP332
             services.AddTransient<UserViewModel>(CreateUserViewModel);
             services.AddTransient<PropertyViewModel>(CreatePropertyViewModel);
             services.AddTransient<CreatePropertyViewModel>(CreateCreatePropertyViewModel);
+            services.AddTransient<AvaliablePropertiesViewModel>(createAvaliablePropertiesViewModel);
 
 
             // Setup the required dependencies for the nav bar
@@ -103,6 +104,12 @@ namespace CMP332
             return new LayoutNavigationService<ReportingViewModel>(serviceProvider.GetRequiredService<NavigationStore>(), serviceProvider.GetRequiredService<ReportingViewModel>, serviceProvider.GetRequiredService<NavigationBarViewModel>);
         }
 
+
+        private INavigationService createAvaliblePropertyNavigationService(IServiceProvider serviceProvider)
+        {
+            return new LayoutNavigationService<AvaliablePropertiesViewModel>(serviceProvider.GetRequiredService<NavigationStore>(), serviceProvider.GetRequiredService<AvaliablePropertiesViewModel>, serviceProvider.GetRequiredService<NavigationBarViewModel>);
+        }
+
         private INavigationService CreateLoginNavigationService(IServiceProvider serviceProvider)
         {
             return new ModalNavigationService<LoginViewModel>(serviceProvider.GetRequiredService<ModalNavigationStore>(), serviceProvider.GetRequiredService<LoginViewModel>);
@@ -141,7 +148,7 @@ namespace CMP332
             return new NavigationBarViewModel(serviceProvider.GetRequiredService<UserStore>(),CreateHomeNavigationSystem(serviceProvider),
                 CreateLoginNavigationService(serviceProvider),CreateAcountNavigationService(serviceProvider),
                 CreateUserNavigationService(serviceProvider),CreatePropertyNavigationService(serviceProvider),
-                createReportsNavigationService(serviceProvider));
+                createReportsNavigationService(serviceProvider),createAvaliblePropertyNavigationService(serviceProvider));
         }
 
         private UserViewModel CreateUserViewModel(IServiceProvider serviceProvider)
@@ -166,6 +173,11 @@ namespace CMP332
         private ReportingViewModel CreateReportingViewModel(IServiceProvider serviceProvider)
         {
             return new ReportingViewModel();
+        }
+
+        private AvaliablePropertiesViewModel createAvaliablePropertiesViewModel(IServiceProvider serviceProvider)
+        {
+            return new AvaliablePropertiesViewModel();
         }
         #endregion
     }
