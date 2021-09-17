@@ -226,6 +226,7 @@ namespace CMP332.ViewModels
             {
                 throw new Exception("There has been an issue with your request");
             };
+
             _closeModalsService.Navigate();
         }
     }

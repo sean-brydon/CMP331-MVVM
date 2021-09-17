@@ -15,12 +15,18 @@ namespace CMP332.ViewModels
         public ICommand NavigateAccountCommand { get; set; }
         public ICommand NavigateAdminCommand { get; set; }
         public ICommand NavigatePropertiesCommand { get; set; }
+        public ICommand NavigateReportCommand { get; set; }
 
 
         public bool IsLoggedIn => _userStore.IsLoggedIn;
         public bool IsAdmin => _userStore.IsAdmin;
+        public bool IsLettingStaffOrAdmin => _userStore.IsAdmin || _userStore.IsLettingAgent;
 
-        public NavigationBarViewModel(UserStore userStore,INavigationService homeNavigationService, INavigationService loginNavigationService, INavigationService accountNavigationService,INavigationService userManagementService,INavigationService propertiesNavigationService)
+        public NavigationBarViewModel(UserStore userStore,INavigationService homeNavigationService, 
+            INavigationService loginNavigationService, INavigationService accountNavigationService,
+            INavigationService userManagementService,INavigationService propertiesNavigationService,
+            INavigationService reportNavigationService
+            )
         {
             _userStore = userStore;
             NavigateHomeCommand = new NavigateCommand(homeNavigationService);
@@ -28,6 +34,7 @@ namespace CMP332.ViewModels
             NavigateAccountCommand = new NavigateCommand(accountNavigationService);
             NavigateAdminCommand = new NavigateCommand(userManagementService);
             NavigatePropertiesCommand = new NavigateCommand(propertiesNavigationService);
+            NavigateReportCommand = new NavigateCommand(reportNavigationService);
             LogoutUserCommand = new LogoutCommand(userStore);
 
 
@@ -38,6 +45,7 @@ namespace CMP332.ViewModels
         {
             OnPropertyChanged(nameof(IsLoggedIn));
             OnPropertyChanged(nameof(IsAdmin));
+            OnPropertyChanged(nameof(IsLettingStaffOrAdmin));
         }
 
         public override void Dispose()

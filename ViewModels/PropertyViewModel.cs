@@ -13,6 +13,8 @@ namespace CMP332.ViewModels
 {
     public class PropertyViewModel: ViewModelBase
     {
+        private  UserStore _userStore;
+
         #region OnChangeVars
 
         private List<Property> _properties;
@@ -175,6 +177,7 @@ namespace CMP332.ViewModels
             }
         }
 
+        public bool IsAdmin => _userStore.IsAdmin;
         #endregion
 
 
@@ -184,6 +187,7 @@ namespace CMP332.ViewModels
 
         public PropertyViewModel(UserStore userStore, INavigationService openModalNavigationService)
         {
+            _userStore = userStore;
             // Get all properties to populate the table
             Properties = new PropertyService().GetAllWithIncludes();
             // Open Create Properties modal via command TODO - fix

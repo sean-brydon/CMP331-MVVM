@@ -44,6 +44,7 @@ namespace CMP332
             services.AddTransient<CreateUserViewModel>(CreateCreateUserViewModel);
 
             services.AddTransient<AccountViewModel>(CreateAccountViewModel);
+            services.AddTransient<ReportingViewModel>(CreateReportingViewModel);
 
             services.AddTransient<UserViewModel>(CreateUserViewModel);
             services.AddTransient<PropertyViewModel>(CreatePropertyViewModel);
@@ -97,6 +98,11 @@ namespace CMP332
             return new LayoutNavigationService<PropertyViewModel>(serviceProvider.GetRequiredService<NavigationStore>(), serviceProvider.GetRequiredService<PropertyViewModel>, serviceProvider.GetRequiredService<NavigationBarViewModel>);
         }
 
+        private INavigationService createReportsNavigationService(IServiceProvider serviceProvider)
+        {
+            return new LayoutNavigationService<ReportingViewModel>(serviceProvider.GetRequiredService<NavigationStore>(), serviceProvider.GetRequiredService<ReportingViewModel>, serviceProvider.GetRequiredService<NavigationBarViewModel>);
+        }
+
         private INavigationService CreateLoginNavigationService(IServiceProvider serviceProvider)
         {
             return new ModalNavigationService<LoginViewModel>(serviceProvider.GetRequiredService<ModalNavigationStore>(), serviceProvider.GetRequiredService<LoginViewModel>);
@@ -132,7 +138,10 @@ namespace CMP332
 
         private NavigationBarViewModel CreateNavigationBarViewModel(IServiceProvider serviceProvider)
         {
-            return new NavigationBarViewModel(serviceProvider.GetRequiredService<UserStore>(),CreateHomeNavigationSystem(serviceProvider),CreateLoginNavigationService(serviceProvider),CreateAcountNavigationService(serviceProvider),CreateUserNavigationService(serviceProvider),CreatePropertyNavigationService(serviceProvider));
+            return new NavigationBarViewModel(serviceProvider.GetRequiredService<UserStore>(),CreateHomeNavigationSystem(serviceProvider),
+                CreateLoginNavigationService(serviceProvider),CreateAcountNavigationService(serviceProvider),
+                CreateUserNavigationService(serviceProvider),CreatePropertyNavigationService(serviceProvider),
+                createReportsNavigationService(serviceProvider));
         }
 
         private UserViewModel CreateUserViewModel(IServiceProvider serviceProvider)
@@ -152,6 +161,11 @@ namespace CMP332
         private PropertyViewModel CreatePropertyViewModel(IServiceProvider serviceProvider)
         {
             return new PropertyViewModel(serviceProvider.GetRequiredService<UserStore>(), CreateCreateProperCreateCrudNavigationService(serviceProvider));
+        }
+
+        private ReportingViewModel CreateReportingViewModel(IServiceProvider serviceProvider)
+        {
+            return new ReportingViewModel();
         }
         #endregion
     }

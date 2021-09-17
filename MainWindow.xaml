@@ -29,6 +29,9 @@
             </DataTemplate>
             <DataTemplate DataType="{x:Type vms:CreatePropertyViewModel}">
                 <views:CreatePropertyView />
+            </DataTemplate>    
+            <DataTemplate DataType="{x:Type vms:ReportingViewModel}">
+                <views:ReportingView />
             </DataTemplate>
             <DataTemplate DataType="{x:Type vms:PropertyViewModel}">
                 <views:PropertyView />

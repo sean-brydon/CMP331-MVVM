@@ -2,6 +2,7 @@
 using CMP332.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,7 +21,7 @@ namespace CMP332.Services
 
         public List<Invoice> FindAll()
         {
-            return _invoiceContext.Collection().ToList();
+            return _invoiceContext.Collection().Include("Lettor").ToList();
         }
 
         public List<Invoice> FindAllOverdue()
