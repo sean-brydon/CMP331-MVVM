@@ -18,9 +18,9 @@ namespace CMP332.Services
             _jobContext = ContainerHelper.Container.Resolve<IRepository<Job>>();
         }
 
-        //public List<Job> GetAllJobsWhereNoPropertyAssigned()
-        //{
-        //    return _jobContext.DbSet().Where(j => j.Property == null).ToList();
-        //}
+        public List<Job> GetAllJobsWhereNoPropertyAssigned()
+        {
+            return _jobContext.DbSet().Where(j => j.JobCompleted == false).ToList();
+        }
     }
 }

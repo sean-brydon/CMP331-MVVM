@@ -48,6 +48,5 @@ namespace CMP332.Models
             CostPerMonth = costPerMonth;
         }
 
-
     }
 }

@@ -36,18 +36,22 @@ namespace CMP332.Migrations
             User SysAdmin = new User(1, "SysAdmin", "Password99!",sysAdminRole);
             User LettingAgent = new User(2, "LettingAgent", "Password99!",lettingAgentRole);
             User Maintance = new User(3, "MaintenanceStaff", "Password99!", maintenanceRole);
+            User Steve = new User(4, "Steve", "Password99!", maintenanceRole);
+            User Chris = new User(5, "Chris", "Password99!", lettingAgentRole);
 
 
             context.Users.AddOrUpdate(SysAdmin);
             context.Users.AddOrUpdate(LettingAgent);
             context.Users.AddOrUpdate(Maintance);
+            context.Users.AddOrUpdate(Steve);
+            context.Users.AddOrUpdate(Chris);
 
             // Create Maintance Jobs
             Job job1 = new Job(1, "Broken Heating", "Gas won't turn on for the heating", false);
             Job job2 = new Job(2, "Door won't close", "Door won't close all the way and it's letting in a draft", false);
             Job job3 = new Job(3, "Dripping Tap", "Bathroom tap is dripping", false);
-            Job job4 = new Job(4, "Light not working", "Garage Light doesnt work", false);
-            Job job5 = new Job(5, "Light not working", "Bathroom Light doesnt work", true);
+            Job job4 = new Job(4, "Garage Light not working", "Garage Light doesnt work", false);
+            Job job5 = new Job(5, "Bathroom Light not working", "Bathroom Light doesnt work", true);
 
 
             context.Jobs.AddOrUpdate(job1);
@@ -64,6 +68,8 @@ namespace CMP332.Migrations
             Inspection FiveYearlyElectric2 = new Inspection(6,InspectionType.FiveYearElectricity,true);
             Inspection QuarterlyInspections = new Inspection(4,InspectionType.QuarterlyInspections,false);
             Inspection QuarterlyInspection2 = new Inspection(5,InspectionType.QuarterlyInspections,true);
+            Inspection QuarterlyInspections3 = new Inspection(6, InspectionType.QuarterlyInspections, false);
+
 
             context.Inspections.AddOrUpdate(YearlyGasInspection);
             context.Inspections.AddOrUpdate(YearlyGasInspection1);
@@ -71,6 +77,7 @@ namespace CMP332.Migrations
             context.Inspections.AddOrUpdate(FiveYearlyElectric2);
             context.Inspections.AddOrUpdate(QuarterlyInspections);
             context.Inspections.AddOrUpdate(QuarterlyInspection2);
+            context.Inspections.AddOrUpdate(QuarterlyInspections3);
 
             // Create Lettors
 
@@ -80,12 +87,14 @@ namespace CMP332.Migrations
             Lettor lettor3 = new Lettor(3, "Sam Smith", dateTime.AddYears(-2), dateTime.AddMonths(5));
             Lettor lettor4 = new Lettor(4, "Adam John", dateTime.AddYears(-5), dateTime.AddDays(2));
             Lettor lettor5 = new Lettor(5, "Chloe Smart", dateTime.AddYears(-1), dateTime.AddMonths(1));
+            Lettor lettor6 = new Lettor(5, "Lewis Adams", dateTime.AddYears(-1), dateTime.AddMonths(1));
 
             context.Lettors.AddOrUpdate(lettor1);
             context.Lettors.AddOrUpdate(lettor2);
             context.Lettors.AddOrUpdate(lettor3);
             context.Lettors.AddOrUpdate(lettor4);
             context.Lettors.AddOrUpdate(lettor5);
+            context.Lettors.AddOrUpdate(lettor6);
 
             // Properties 
 
@@ -107,13 +116,11 @@ namespace CMP332.Migrations
             List<Inspection> inspections3 = new List<Inspection>();
             inspections2.Add(QuarterlyInspection2);
 
-            List<Job> jobs3 = new List<Job>();
-            jobs1.Add(job4);
-            jobs1.Add(job5);
+       
 
             Property property1 = new Property(1, "9 Wallibo Street", 2, Maintance, LettingAgent, lettor1,inspections1,jobs1);
             Property property2 = new Property(2, "16 Wallibo Street", 3, Maintance, LettingAgent, lettor2,inspections2,jobs2);
-            Property property3 = new Property(3, "7 Strong Street", 1, Maintance, LettingAgent, lettor3,inspections3,jobs3);
+            Property property3 = new Property(3, "7 Strong Street", 1, Maintance, LettingAgent, lettor3,inspections3,null);
             Property property4 = new Property(4, "7 Strong Street", 5, Maintance, LettingAgent, null, null, null);
             Property property5 = new Property(5, "7 Strong Street", 2, Maintance, LettingAgent, null, null, null);
 

@@ -79,5 +79,10 @@ namespace CMP332.Services
             userContext.Delete(selectedUser.Id);
             await userContext.Commit();
         }
+
+        public List<User> GetAllUsersByRole(string rollName)
+        {
+            return userContext.DbSet().Include("Role").Where(e => e.Role.Name == rollName).ToList();
+        }
     }
 }

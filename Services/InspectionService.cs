@@ -24,6 +24,11 @@ namespace CMP332.Services
             return inspections;
         }
 
+        public List<Inspection> GetIncompletedInspections()
+        {
+            return _inspectionContext.DbSet().Where(e => e.InspectionCompleted == false).ToList();
+        }
+
         public List<Inspection> GetAll()
         {
             return _inspectionContext.Collection().ToList();

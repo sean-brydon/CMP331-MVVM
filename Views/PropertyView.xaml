@@ -4,8 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CMP332.Views"
+             xmlns:converters="clr-namespace:CMP332.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <converters:InvertableBooleanToVisibilityConverter x:Key="BoolToVis" />
+        <converters:IntToString x:Key="IntToString" />
+    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
@@ -18,9 +23,9 @@
                     <GridViewColumn DisplayMemberBinding="{Binding Id}" Header="Id"/>
                     <GridViewColumn DisplayMemberBinding="{Binding Address}" Header="Address"/>
                     <GridViewColumn DisplayMemberBinding="{Binding NumberOfRooms}" Header="Number Of Rooms"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding MaintanceStaff.Name}" Header="Maintenance Staff"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding LettingAgent.Name}" Header="Letting Agent"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding CurrentLettor.FullName}" Header="Number of Jobs"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding MaintanceStaff.Username}" Header="Maintenance Staff"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding LettingAgent.Username}" Header="Letting Agent"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding CurrentLettor.FullName}" Header="Current Lettor"/>
                     <GridViewColumn DisplayMemberBinding="{Binding Role.Name}" Header="Number of Inspections Due"/>
                 </GridView>
             </ListView.View>
@@ -33,7 +38,7 @@
                     HorizontalAlignment="Center"
                     FontSize="20"
                     Text="Create Property" />
-            <Button Content="Create" Margin="0 10 0 0 "  Command="{Binding NavigateUserModal}"/>
+            <Button Content="Create" Margin="0 10 0 0 "  Command="{Binding NavigateCreatePropertiesModal}"/>
 
 
             <StackPanel  
@@ -45,49 +50,49 @@
                     HorizontalAlignment="Center"
                     FontSize="20"
                     Text="Update Property" />
-                <StackPanel>
-                    <TextBlock Text="Address" />
-                    <TextBox Text="{Binding EditPropertyname}" />
-                </StackPanel>
                 <ScrollViewer Height="150">
                     <StackPanel>
+                        <StackPanel>
+                            <TextBlock Text="Address" />
+                            <TextBox Text="{Binding EditPropertyAddress}" />
+                        </StackPanel>
                         <StackPanel Grid.Row="2" Margin="0 10 0 0">
                             <TextBlock Text="Number Of Rooms" />
-                            <TextBox Text="{Binding EditPassword}" />
+                            <TextBox Text="{Binding EditNumberOfRooms}" />
                         </StackPanel>
 
                         <StackPanel Grid.Row="2" Margin="0 10 0 0">
                             <TextBlock Text="Maintenance Staff" />
                             <ComboBox    
-                                ItemsSource="{Binding Path=Roles}"    
-                                SelectedItem="{Binding Path=SelectedRole}"  
-                                DisplayMemberPath="Name"/>
+                                ItemsSource="{Binding AllMaintanceStaff}"    
+                                SelectedItem="{Binding EditMaintanceStaff}"  
+                                DisplayMemberPath="Username"/>
                         </StackPanel>
 
                         <StackPanel Grid.Row="2" Margin="0 10 0 0">
                             <TextBlock Text="Letting Agent" />
                             <ComboBox    
-                                ItemsSource="{Binding Path=Roles}"    
-                                SelectedItem="{Binding Path=SelectedRole}"  
-                                DisplayMemberPath="Name"/>
+                                ItemsSource="{Binding AllLettingAgents}"    
+                                SelectedItem="{Binding EditLettingAgentUser}"  
+                                DisplayMemberPath="Username"/>
                         </StackPanel>
                         <StackPanel Grid.Row="2" Margin="0 10 0 0">
                             <TextBlock Text="Inspections" />
                             <ComboBox    
-                                ItemsSource="{Binding Path=Roles}"    
-                                SelectedItem="{Binding Path=SelectedRole}"  
-                                DisplayMemberPath="Name"/>
+                                ItemsSource="{Binding AllInspections}"    
+                                SelectedItem="{Binding EditInspections}"  
+                                DisplayMemberPath="InspectionType"/>
                         </StackPanel>
                         <StackPanel Grid.Row="2" Margin="0 10 0 0">
-                            <TextBlock Text="Inspections" />
+                            <TextBlock Text="Jobs" />
                             <ComboBox    
-                                ItemsSource="{Binding Path=Roles}"    
-                                SelectedItem="{Binding Path=SelectedRole}"  
+                                ItemsSource="{Binding AllJobs}"    
+                                SelectedItem="{Binding EditJobs}"  
                                 DisplayMemberPath="Name"/>
                         </StackPanel>
                     </StackPanel>
                 </ScrollViewer>
-                
+
                 <Button Content="Update" Margin="0 10 0 0 " Command="{Binding UpdatePropertyCommand}"/>
                 <TextBlock
                     Grid.Row="0"
@@ -95,9 +100,9 @@
                     FontSize="20"
                     Margin="0 20 0 0"
                     Text="Delete Property" />
-                <Button Content="Delete" Margin="0 10 0 0 " Foreground="red" Command="{Binding DeletePropertyCommand}"/>
+                <Button Content="Delete" Margin="0 10 0 0 " Foreground="red" Command="{Binding DeleteSelectedPropertyCommand}"/>
 
-                <TextBlock Text="{Binding ErrorMessage}"></TextBlock>
+                <TextBlock Text="{Binding ErrorMessage}" TextWrapping="WrapWithOverflow"></TextBlock>
             </StackPanel>
         </StackPanel>
     </Grid>

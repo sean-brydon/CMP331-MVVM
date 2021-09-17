@@ -46,6 +46,7 @@ namespace CMP332
             services.AddTransient<AccountViewModel>(CreateAccountViewModel);
 
             services.AddTransient<UserViewModel>(CreateUserViewModel);
+            services.AddTransient<PropertyViewModel>(CreatePropertyViewModel);
             services.AddTransient<CreatePropertyViewModel>(CreateCreatePropertyViewModel);
 
 
@@ -131,7 +132,7 @@ namespace CMP332
 
         private NavigationBarViewModel CreateNavigationBarViewModel(IServiceProvider serviceProvider)
         {
-            return new NavigationBarViewModel(serviceProvider.GetRequiredService<UserStore>(),CreateHomeNavigationSystem(serviceProvider),CreateLoginNavigationService(serviceProvider),CreateAcountNavigationService(serviceProvider),CreateUserNavigationService(serviceProvider));
+            return new NavigationBarViewModel(serviceProvider.GetRequiredService<UserStore>(),CreateHomeNavigationSystem(serviceProvider),CreateLoginNavigationService(serviceProvider),CreateAcountNavigationService(serviceProvider),CreateUserNavigationService(serviceProvider),CreatePropertyNavigationService(serviceProvider));
         }
 
         private UserViewModel CreateUserViewModel(IServiceProvider serviceProvider)
